@@ -49,9 +49,9 @@ Partial Class FormUser
         Label1.Font = New Font("Geist Mono Medium", 16F, FontStyle.Bold)
         Label1.Location = New Point(10, 20)
         Label1.Name = "Label1"
-        Label1.Size = New Size(152, 28)
+        Label1.Size = New Size(166, 28)
         Label1.TabIndex = 0
-        Label1.Text = "Semua User"
+        Label1.Text = "Semua Users"
         ' 
         ' DataGridViewUser
         ' 
@@ -239,7 +239,7 @@ Partial Class FormUser
         Name = "FormUser"
         Padding = New Padding(9, 0, 9, 10)
         StartPosition = FormStartPosition.CenterScreen
-        Text = "User"
+        Text = "Users"
         CType(DataGridViewUser, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()

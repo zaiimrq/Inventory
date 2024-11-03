@@ -238,19 +238,19 @@
     <value>Transactions</value>
   </data>
   <data name="UsersToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="UsersToolStripMenuItem.Text" xml:space="preserve">
     <value>Users</value>
   </data>
   <data name="ProfileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="ProfileToolStripMenuItem.Text" xml:space="preserve">
     <value>Profile</value>
   </data>
   <data name="SignOutToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="SignOutToolStripMenuItem1.Text" xml:space="preserve">
     <value>Sign Out</value>

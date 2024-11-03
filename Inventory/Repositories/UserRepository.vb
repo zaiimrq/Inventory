@@ -32,7 +32,9 @@ Namespace Repositories
                     Dim User As New User With {
                         .Id = Reader("id"),
                         .Name = Reader("name"),
-                        .Username = Reader("username")}
+                        .Username = Reader("username"),
+                        .Password = Reader("password")
+                    }
 
                     Return User
                 End Using

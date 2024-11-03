@@ -25,7 +25,7 @@ Partial Class FormSignIn
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormSignIn))
         PictureBox1 = New PictureBox()
         Panel1 = New Panel()
-        Label3 = New Label()
+        Panel2 = New Panel()
         ButtonSignIn = New Button()
         Label2 = New Label()
         TextBoxPassword = New TextBox()
@@ -35,6 +35,7 @@ Partial Class FormSignIn
         LinkLabelZaiimrq = New LinkLabel()
         Label5 = New Label()
         LinkLabelSan = New LinkLabel()
+        Label6 = New Label()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         Panel1.SuspendLayout()
         SuspendLayout()
@@ -53,26 +54,26 @@ Partial Class FormSignIn
         ' 
         Panel1.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         Panel1.BackColor = Color.CornflowerBlue
-        Panel1.Controls.Add(Label3)
+        Panel1.Controls.Add(Panel2)
         Panel1.Controls.Add(ButtonSignIn)
         Panel1.Controls.Add(Label2)
         Panel1.Controls.Add(TextBoxPassword)
         Panel1.Controls.Add(Label1)
         Panel1.Controls.Add(TextBoxUsername)
+        Panel1.Font = New Font("Geist Mono SemiBold", 12F, FontStyle.Bold)
         Panel1.Location = New Point(452, 22)
         Panel1.Name = "Panel1"
         Panel1.Size = New Size(296, 300)
         Panel1.TabIndex = 1
         ' 
-        ' Label3
+        ' Panel2
         ' 
-        Label3.AutoSize = True
-        Label3.Font = New Font("Geist Mono", 15.7499981F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label3.Location = New Point(70, 30)
-        Label3.Name = "Label3"
-        Label3.Size = New Size(168, 26)
-        Label3.TabIndex = 5
-        Label3.Text = "Welcome Back"
+        Panel2.BackgroundImage = CType(resources.GetObject("Panel2.BackgroundImage"), Image)
+        Panel2.BackgroundImageLayout = ImageLayout.Stretch
+        Panel2.Location = New Point(125, 16)
+        Panel2.Name = "Panel2"
+        Panel2.Size = New Size(60, 60)
+        Panel2.TabIndex = 5
         ' 
         ' ButtonSignIn
         ' 
@@ -130,7 +131,7 @@ Partial Class FormSignIn
         ' 
         Label4.AutoSize = True
         Label4.Font = New Font("Geist Mono", 9.749999F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label4.Location = New Point(30, 336)
+        Label4.Location = New Point(25, 336)
         Label4.Name = "Label4"
         Label4.Size = New Size(139, 16)
         Label4.TabIndex = 2
@@ -141,7 +142,7 @@ Partial Class FormSignIn
         LinkLabelZaiimrq.AutoSize = True
         LinkLabelZaiimrq.Cursor = Cursors.Hand
         LinkLabelZaiimrq.Font = New Font("Geist Mono", 9.749999F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        LinkLabelZaiimrq.Location = New Point(164, 336)
+        LinkLabelZaiimrq.Location = New Point(155, 336)
         LinkLabelZaiimrq.Name = "LinkLabelZaiimrq"
         LinkLabelZaiimrq.Size = New Size(63, 16)
         LinkLabelZaiimrq.TabIndex = 3
@@ -152,7 +153,7 @@ Partial Class FormSignIn
         ' 
         Label5.AutoSize = True
         Label5.Font = New Font("Geist Mono", 9.749999F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Label5.Location = New Point(229, 336)
+        Label5.Location = New Point(218, 336)
         Label5.Name = "Label5"
         Label5.Size = New Size(31, 16)
         Label5.TabIndex = 4
@@ -163,18 +164,29 @@ Partial Class FormSignIn
         LinkLabelSan.AutoSize = True
         LinkLabelSan.Cursor = Cursors.Hand
         LinkLabelSan.Font = New Font("Geist Mono", 9.749999F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        LinkLabelSan.Location = New Point(261, 336)
+        LinkLabelSan.Location = New Point(249, 336)
         LinkLabelSan.Name = "LinkLabelSan"
         LinkLabelSan.Size = New Size(151, 16)
         LinkLabelSan.TabIndex = 5
         LinkLabelSan.TabStop = True
         LinkLabelSan.Text = "sanwiliamsofficial"
         ' 
+        ' Label6
+        ' 
+        Label6.AutoSize = True
+        Label6.Font = New Font("Geist Mono SemiBold", 10F, FontStyle.Bold)
+        Label6.Location = New Point(30, 1)
+        Label6.Name = "Label6"
+        Label6.Size = New Size(104, 18)
+        Label6.TabIndex = 6
+        Label6.Text = "Welcome Back"
+        ' 
         ' FormSignIn
         ' 
         AutoScaleDimensions = New SizeF(10F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(784, 361)
+        Controls.Add(Label6)
         Controls.Add(LinkLabelSan)
         Controls.Add(Label5)
         Controls.Add(LinkLabelZaiimrq)
@@ -204,11 +216,12 @@ Partial Class FormSignIn
     Friend WithEvents TextBoxUsername As TextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents TextBoxPassword As TextBox
-    Friend WithEvents Label3 As Label
     Friend WithEvents ButtonSignIn As Button
     Friend WithEvents Label4 As Label
     Friend WithEvents LinkLabelZaiimrq As LinkLabel
     Friend WithEvents Label5 As Label
     Friend WithEvents LinkLabelSan As LinkLabel
+    Friend WithEvents Label6 As Label
+    Friend WithEvents Panel2 As Panel
 
 End Class

@@ -26,7 +26,8 @@ Namespace Facades
                 If TypeOf OpenForm IsNot FormSignIn Then OpenForm.Hide()
             Next
 
-            FormSignIn.Show()
+            Dim Form As New FormSignIn
+            Form.Show()
         End Sub
     End Module
 End Namespace

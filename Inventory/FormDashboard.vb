@@ -4,6 +4,7 @@ Imports Inventory.Services
 
 Public Class FormDashboard
     Private Service As New DashboardService
+    Private GreetingText As String = "Welcome Back, "
     Private Sub FormDashboard_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Call SetTimer()
         Call InitialStats()
@@ -20,7 +21,7 @@ Public Class FormDashboard
         End If
 
         Me.UsersToolStripMenuItem.Visible = Auth.User.Username = "admin"
-        Me.LabelGreeting.Text = Me.LabelGreeting.Text & Auth.User.Name
+        Me.LabelGreeting.Text = Me.GreetingText & Auth.User.Name
     End Sub
 
     Private Sub SetTimer()
@@ -40,7 +41,7 @@ Public Class FormDashboard
     End Sub
 
 
-    Private Sub ProductsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BarangToolStripMenuItem.Click
+    Private Sub BarangToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BarangToolStripMenuItem.Click
         FormBarang.Show()
         AddHandler Theme.SwitchedTheme, AddressOf FormBarang.SetTheme
     End Sub
@@ -89,6 +90,7 @@ Public Class FormDashboard
     Private Sub FormDashboard_Shown(sender As Object, e As EventArgs) Handles Me.Shown
         AddHandler FormBarangKeluar.SyncDataBarang, AddressOf FormBarang.RefreshForm
         AddHandler FormBarangMasuk.SyncDataBarang, AddressOf FormBarang.RefreshForm
+        AddHandler FormProfile.UpdatedProfile, AddressOf Me.UpdatedProfileHandler
     End Sub
 
     Private Sub ThemeToggle_CheckedChanged(sender As Object, e As EventArgs) Handles ThemeToggle.CheckedChanged
@@ -117,5 +119,13 @@ Public Class FormDashboard
     Private Sub UsersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UsersToolStripMenuItem.Click
         FormUser.Show()
         AddHandler Theme.SwitchedTheme, AddressOf FormUser.SetTheme
+    End Sub
+
+    Private Sub ProfileToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProfileToolStripMenuItem.Click
+        FormProfile.Show()
+    End Sub
+
+    Private Sub UpdatedProfileHandler()
+        Me.LabelGreeting.Text = Me.GreetingText & Auth.User.Name
     End Sub
 End Class
