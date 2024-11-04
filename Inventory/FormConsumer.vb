@@ -5,6 +5,7 @@ Imports Inventory.Services
 
 Public Class FormConsumer
     Private Service As New ConsumerService
+    Public Event DeletedConsumer()
     Private Sub FormConsumer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Call RefreshForm()
         Call (New ToolTip).SetToolTip(Me.PanelRefresh, "Refresh")
@@ -23,11 +24,14 @@ Public Class FormConsumer
         Me.DataGridViewConsumer.Rows.Clear()
         Me.DataGridViewConsumer.Columns("Id").Visible = False
         Dim No As Integer = 1
+        Dim DataTable As DataTable = Service.Index(Search)
 
-        For Each Row As DataRow In Service.Index(Search).Rows
-            Me.DataGridViewConsumer.Rows.Add(No, Row("id"), Row("name"))
-            No += 1
-        Next
+        If DataTable IsNot Nothing AndAlso DataTable.Rows.Count > 0 Then
+            For Each Row As DataRow In DataTable.Rows
+                Me.DataGridViewConsumer.Rows.Add(No, Row("id"), Row("name"))
+                No += 1
+            Next
+        End If
     End Sub
     Private Sub TextBoxSearch_TextChanged(sender As Object, e As EventArgs) Handles TextBoxSearch.TextChanged
         Me.FillDataGridView(Me.TextBoxSearch.Text)
@@ -59,6 +63,7 @@ Public Class FormConsumer
         Try
             Service.Destroy(New Consumer With {.Id = Me.TextBoxId.Text})
             Call RefreshForm()
+            RaiseEvent DeletedConsumer()
         Catch ex As ValidationException
             Box.Warning(ex.Message)
         End Try
@@ -72,28 +77,6 @@ Public Class FormConsumer
 
     Public Sub SetTheme()
         Theme.Apply(Me)
-        Dim DGF As DataGridView = Me.DataGridViewConsumer
-        If Theme.IsDark Then
-            DGF.DefaultCellStyle.ForeColor = Color.White
-            DGF.DefaultCellStyle.BackColor = Theme.DarkColor
-            DGF.BackgroundColor = Theme.DarkColor
-            DGF.ForeColor = Color.White
-            DGF.ColumnHeadersDefaultCellStyle.BackColor = Theme.DarkColor
-            DGF.ColumnHeadersDefaultCellStyle.ForeColor = Color.White
-            DGF.EnableHeadersVisualStyles = False
-            DGF.RowHeadersDefaultCellStyle.BackColor = Theme.DarkColor
-            DGF.RowHeadersDefaultCellStyle.ForeColor = Color.White
-        Else
-            DGF.DefaultCellStyle.ForeColor = Color.Black
-            DGF.DefaultCellStyle.BackColor = SystemColors.Control
-            DGF.BackgroundColor = SystemColors.Control
-            DGF.ForeColor = Color.Black
-            DGF.ColumnHeadersDefaultCellStyle.BackColor = SystemColors.Control
-            DGF.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black
-            DGF.RowHeadersDefaultCellStyle.BackColor = SystemColors.Control
-            DGF.RowHeadersDefaultCellStyle.ForeColor = Color.Black
-            DGF.EnableHeadersVisualStyles = True
-        End If
     End Sub
 
     Private Sub FormConsumer_Shown(sender As Object, e As EventArgs) Handles Me.Shown

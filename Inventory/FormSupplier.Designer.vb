@@ -197,7 +197,6 @@ Partial Class FormSupplier
         MinimumSize = New Size(700, 500)
         Name = "FormSupplier"
         Padding = New Padding(10, 0, 10, 10)
-        ShowInTaskbar = False
         Text = "Suppliers"
         CType(DataGridViewSupplier, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)

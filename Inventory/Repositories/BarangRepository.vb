@@ -26,15 +26,11 @@ Namespace Repositories
                 Dim Command As New MySqlCommand("SELECT * FROM barang WHERE id = @id", Database.Connection)
                 Command.Parameters.AddWithValue("@id", Id)
                 Using Reader As MySqlDataReader = Command.ExecuteReader
-                    If Reader.Read Then
-                        Dim Barang = New Barang With {
+                    If Reader.Read Then Return New Barang With {
                         .Id = Reader("id"),
                         .Name = Reader("name"),
                         .Stock = Reader("stock"),
                         .Unit = Reader("unit")}
-
-                        Return Barang
-                    End If
 
                     Return Nothing
                 End Using
@@ -126,17 +122,16 @@ Namespace Repositories
                 Command.Parameters.AddWithValue("@name", Name)
 
                 Using Reader As MySqlDataReader = Command.ExecuteReader
-                    If Reader.Read Then
-                        Return New Barang With {
+                    If Reader.Read Then Return New Barang With {
                         .Id = Reader("id"),
                         .Name = Reader("name"),
                         .Unit = Reader("unit"),
                         .Stock = Reader("stock")
                         }
-                    End If
                 End Using
-            Catch ex As MySqlException
 
+                Return Nothing
+            Catch ex As MySqlException
                 Box.Danger(ex.Message)
                 Return Nothing
             Finally

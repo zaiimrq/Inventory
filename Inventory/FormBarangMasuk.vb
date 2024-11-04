@@ -27,6 +27,7 @@ Public Class FormBarangMasuk
         Call Me.SetTheme()
 
         Me.TextBoxCode.Text = Me.UniqueId
+        Me.LabelAmountUnit.Visible = False
     End Sub
 
     Private Sub FillComboBox()
@@ -47,14 +48,13 @@ Public Class FormBarangMasuk
 
     Private Sub FillDataGridView(Optional Search As String = "")
         Me.DataGridViewBarangMasuk.Rows.Clear()
-        'Me.DataGridViewBarangMasuk.Columns("Id").Visible = False
+        Dim DataTable As DataTable = Service.Index(Search)
 
-        Dim No As Integer = 1
-
-        For Each Row As DataRow In Service.Index(Search).Rows
-            Me.DataGridViewBarangMasuk.Rows.Add(No, Row("id"), Row("code"), Row("barang_name"), Row("supplier_name"), Row("amount") & " " & Row("barang_unit"), Row("provider"), Convert.ToDateTime(Row("created_at")).ToString("dd MMMM yyyy"))
-            No += 1
-        Next
+        If DataTable IsNot Nothing AndAlso DataTable.Rows.Count > 0 Then
+            For Each Row As DataRow In DataTable.Rows
+                Me.DataGridViewBarangMasuk.Rows.Add(Row("id"), Row("code"), Row("barang_name"), Row("supplier_name"), Row("amount") & " " & Row("barang_unit"), Row("provider"), Convert.ToDateTime(Row("created_at")).ToString("dd MMMM yyyy"))
+            Next
+        End If
     End Sub
 
     Private Sub TextBoxSearch_TextChanged(sender As Object, e As EventArgs) Handles TextBoxSearch.TextChanged
@@ -114,37 +114,19 @@ Public Class FormBarangMasuk
             Dim Str As String() = Row.Cells("Amount").Value.ToString().Split(" "c)
 
             Me.TextBoxAmount.Text = Str(0).Replace(",", ".")
+            Me.LabelAmountUnit.Visible = True
+            Me.LabelAmountUnit.Text = Str(1)
         End If
     End Sub
 
     Public Sub SetTheme()
         Theme.Apply(Me)
-        Dim DGF As DataGridView = Me.DataGridViewBarangMasuk
-        If Theme.IsDark Then
-            DGF.DefaultCellStyle.ForeColor = Color.White
-            DGF.DefaultCellStyle.BackColor = Theme.DarkColor
-            DGF.BackgroundColor = Theme.DarkColor
-            DGF.ForeColor = Color.White
-            DGF.ColumnHeadersDefaultCellStyle.BackColor = Theme.DarkColor
-            DGF.ColumnHeadersDefaultCellStyle.ForeColor = Color.White
-            DGF.EnableHeadersVisualStyles = False
-            DGF.RowHeadersDefaultCellStyle.BackColor = Theme.DarkColor
-            DGF.RowHeadersDefaultCellStyle.ForeColor = Color.White
-        Else
-            DGF.DefaultCellStyle.ForeColor = Color.Black
-            DGF.DefaultCellStyle.BackColor = SystemColors.Control
-            DGF.BackgroundColor = SystemColors.Control
-            DGF.ForeColor = Color.Black
-            DGF.ColumnHeadersDefaultCellStyle.BackColor = SystemColors.Control
-            DGF.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black
-            DGF.RowHeadersDefaultCellStyle.BackColor = SystemColors.Control
-            DGF.RowHeadersDefaultCellStyle.ForeColor = Color.Black
-            DGF.EnableHeadersVisualStyles = True
-        End If
     End Sub
 
     Private Sub FormBarangMasuk_Shown(sender As Object, e As EventArgs) Handles Me.Shown
         Call Me.SetTheme()
+        AddHandler FormBarang.SyncDataBarang, AddressOf Me.RefreshForm
+        AddHandler FormSupplier.DeletedSupplier, AddressOf Me.RefreshForm
     End Sub
 
     Private Sub PanelRefresh_Click(sender As Object, e As EventArgs) Handles PanelRefresh.Click

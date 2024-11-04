@@ -70,7 +70,7 @@ Partial Class FormSignIn
         ' 
         Panel2.BackgroundImage = CType(resources.GetObject("Panel2.BackgroundImage"), Image)
         Panel2.BackgroundImageLayout = ImageLayout.Stretch
-        Panel2.Location = New Point(125, 16)
+        Panel2.Location = New Point(121, 12)
         Panel2.Name = "Panel2"
         Panel2.Size = New Size(60, 60)
         Panel2.TabIndex = 5

@@ -33,10 +33,13 @@ Public Class FormBarang
     End Sub
     Private Sub FillDataGridView(Optional Search As String = "")
         Me.DataGridViewBarang.Rows.Clear()
+        Dim DataTable As DataTable = Service.Index(Search)
 
-        For Each Row As DataRow In Service.Index(Search).Rows
-            Me.DataGridViewBarang.Rows.Add(Row("id"), Row("name"), Row("stock"), Row("unit"))
-        Next
+        If DataTable IsNot Nothing AndAlso DataTable.Rows.Count > 0 Then
+            For Each Row As DataRow In DataTable.Rows
+                Me.DataGridViewBarang.Rows.Add(Row("id"), Row("name"), Row("stock"), Row("unit"))
+            Next
+        End If
     End Sub
 
     Private Sub TextBoxSearch_TextChanged(sender As Object, e As EventArgs) Handles TextBoxSearch.TextChanged
@@ -89,28 +92,6 @@ Public Class FormBarang
 
     Public Sub SetTheme()
         Theme.Apply(Me)
-        Dim DGF As DataGridView = Me.DataGridViewBarang
-        If Theme.IsDark Then
-            DGF.DefaultCellStyle.ForeColor = Color.White
-            DGF.DefaultCellStyle.BackColor = Theme.DarkColor
-            DGF.BackgroundColor = Theme.DarkColor
-            DGF.ForeColor = Color.White
-            DGF.ColumnHeadersDefaultCellStyle.BackColor = Theme.DarkColor
-            DGF.ColumnHeadersDefaultCellStyle.ForeColor = Color.White
-            DGF.EnableHeadersVisualStyles = False
-            DGF.RowHeadersDefaultCellStyle.BackColor = Theme.DarkColor
-            DGF.RowHeadersDefaultCellStyle.ForeColor = Color.White
-        Else
-            DGF.DefaultCellStyle.ForeColor = Color.Black
-            DGF.DefaultCellStyle.BackColor = SystemColors.Control
-            DGF.BackgroundColor = SystemColors.Control
-            DGF.ForeColor = Color.Black
-            DGF.ColumnHeadersDefaultCellStyle.BackColor = SystemColors.Control
-            DGF.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black
-            DGF.RowHeadersDefaultCellStyle.BackColor = SystemColors.Control
-            DGF.RowHeadersDefaultCellStyle.ForeColor = Color.Black
-            DGF.EnableHeadersVisualStyles = True
-        End If
     End Sub
 
     Private Sub PanelRefresh_Click(sender As Object, e As EventArgs) Handles PanelRefresh.Click

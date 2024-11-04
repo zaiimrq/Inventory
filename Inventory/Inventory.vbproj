@@ -19,6 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="FormTransactions.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="FormUser.vb" />
     <Compile Update="FormBarangKeluar.vb" />
     <Compile Update="FormBarangMasuk.vb">

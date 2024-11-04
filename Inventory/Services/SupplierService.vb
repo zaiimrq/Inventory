@@ -28,16 +28,18 @@ Namespace Services
 
             Return Repository.UpadateSupplier(Validated, OldSupplier.Id) >= 1
         End Function
-        Public Function Destroy(Supplier As Supplier) As Boolean
+        Public Sub Destroy(Supplier As Supplier)
             Dim OldSupplier As Supplier = Repository.Find(Supplier.Id)
 
             If IsNothing(OldSupplier) Then Throw New ValidationException("Data Not Found !")
 
             Dim Result As DialogResult = Box.Question("Are You Sure ?")
 
-            If Result = DialogResult.Yes Then Return Repository.DeleteSupplier(Supplier) >= 1
-            Return Nothing
-        End Function
+            If Result = DialogResult.Yes Then
+                Repository.DeleteSupplier(Supplier)
+                TransactionRepository.DeleteDataOnNull()
+            End If
+        End Sub
 
         Public Function Validate(Supplier As Supplier) As Supplier
 

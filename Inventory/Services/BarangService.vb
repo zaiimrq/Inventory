@@ -30,16 +30,18 @@ Namespace Services
 
             Return Repository.UpadateBarang(Validated, OldBarang.Id) >= 1
         End Function
-        Public Function Destroy(Barang As Barang) As Boolean
+        Public Sub Destroy(Barang As Barang)
             Dim OldBarang As Barang = Repository.Find(Barang.Id)
 
             If IsNothing(OldBarang) Then Throw New ValidationException("Data Not Found !")
 
             Dim Result As DialogResult = Box.Question("Are You Sure ?")
 
-            If Result = DialogResult.Yes Then Return Repository.DeleteBarang(Barang) >= 1
-            Return Nothing
-        End Function
+            If Result = DialogResult.Yes Then
+                Repository.DeleteBarang(Barang)
+                TransactionRepository.DeleteDataOnNull()
+            End If
+        End Sub
 
         Public Function Validate(Barang As Barang) As Barang
 

@@ -107,5 +107,21 @@ Namespace Repositories
                 Database.CloseConnection()
             End Try
         End Function
+
+        Public Function FindByCode(Code As String) As Integer
+            Database.OpenConnection()
+
+            Try
+                Dim Command As New MySqlCommand("SELECT COUNT(*) FROM barang_masuk WHERE code = @code", Database.Connection)
+                Command.Parameters.AddWithValue("@code", Code)
+                Return Convert.ToInt32(Command.ExecuteScalar)
+
+            Catch ex As MySqlException
+                Box.Danger(ex.Message)
+                Return Nothing
+            Finally
+                Database.CloseConnection()
+            End Try
+        End Function
     End Class
 End Namespace

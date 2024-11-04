@@ -220,16 +220,22 @@
     <value>Manages</value>
   </data>
   <data name="BarangMasukToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>220, 22</value>
   </data>
   <data name="BarangMasukToolStripMenuItem.Text" xml:space="preserve">
     <value>Barang Masuk</value>
   </data>
   <data name="BarangKeluatrToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>220, 22</value>
   </data>
   <data name="BarangKeluatrToolStripMenuItem.Text" xml:space="preserve">
     <value>Barang Keluar</value>
+  </data>
+  <data name="DetailTransactionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>220, 22</value>
+  </data>
+  <data name="DetailTransactionToolStripMenuItem.Text" xml:space="preserve">
+    <value>Detail Transaction</value>
   </data>
   <data name="TransactionsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>116, 22</value>
@@ -238,19 +244,19 @@
     <value>Transactions</value>
   </data>
   <data name="UsersToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>140, 22</value>
   </data>
   <data name="UsersToolStripMenuItem.Text" xml:space="preserve">
     <value>Users</value>
   </data>
   <data name="ProfileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>140, 22</value>
   </data>
   <data name="ProfileToolStripMenuItem.Text" xml:space="preserve">
     <value>Profile</value>
   </data>
   <data name="SignOutToolStripMenuItem1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>140, 22</value>
   </data>
   <data name="SignOutToolStripMenuItem1.Text" xml:space="preserve">
     <value>Sign Out</value>
@@ -7836,6 +7842,12 @@
     <value>BarangKeluatrToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;BarangKeluatrToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DetailTransactionToolStripMenuItem.Name" xml:space="preserve">
+    <value>DetailTransactionToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;DetailTransactionToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;AccountToolStripMenuItem.Name" xml:space="preserve">

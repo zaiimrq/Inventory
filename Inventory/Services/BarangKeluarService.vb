@@ -22,9 +22,10 @@ Namespace Services
 
             Dim Barang As Barang = (New BarangRepository).Find(Validated.BarangId)
 
-            If (Barang.Stock - Validated.Amount) < 0 Then Throw New ValidationException("The Stock Of " & Barang.Name & " Is " & Barang.Stock & Barang.Unit & " !")
+            If (Barang.Stock - Validated.Amount) < 0 Then Throw New ValidationException("The Stock Of " & Barang.Name & " Is " & Barang.Stock & " " & Barang.Unit & " !")
 
             Repository.CreateNewData(Validated)
+            TransactionRepository.CreateData(New Transaction With {.Code = Validated.Code})
         End Sub
         Public Function Update(BarangKeluar As BarangKeluar) As Boolean
             Dim Validated As BarangKeluar = Me.Validate(BarangKeluar)
@@ -47,10 +48,9 @@ Namespace Services
                     .Stock = OldBarangKeluar.Amount - Validated.Amount
                  })
             End If
-
             Return Repository.UpadateData(Validated) >= 1
         End Function
-        Public Function Destroy(BarangKeluar As BarangKeluar) As Boolean
+        Public Sub Destroy(BarangKeluar As BarangKeluar)
             Dim OldBarangKeluar As BarangKeluar = Repository.Find(BarangKeluar.Id)
 
             If IsNothing(OldBarangKeluar) Then Throw New ValidationException("Data Not Found !")
@@ -62,10 +62,10 @@ Namespace Services
                     .Id = OldBarangKeluar.BarangId,
                     .Stock = OldBarangKeluar.Amount
                                            })
-                Return Repository.DeleteData(OldBarangKeluar) >= 1
+                Call Repository.DeleteData(OldBarangKeluar)
+                If Repository.FindByCode(OldBarangKeluar.Code) = 0 Then TransactionRepository.DeleteData(OldBarangKeluar.Code)
             End If
-            Return Nothing
-        End Function
+        End Sub
 
         Public Function Validate(BarangKeluar As BarangKeluar) As BarangKeluar
             If String.IsNullOrEmpty(BarangKeluar.ConsumerId) Then Throw New ValidationException("Field Consumer Is Required !")

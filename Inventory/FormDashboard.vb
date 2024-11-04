@@ -91,17 +91,18 @@ Public Class FormDashboard
         AddHandler FormBarangKeluar.SyncDataBarang, AddressOf FormBarang.RefreshForm
         AddHandler FormBarangMasuk.SyncDataBarang, AddressOf FormBarang.RefreshForm
         AddHandler FormProfile.UpdatedProfile, AddressOf Me.UpdatedProfileHandler
+        AddHandler Theme.SwitchedTheme, AddressOf Me.SetTheme
     End Sub
 
     Private Sub ThemeToggle_CheckedChanged(sender As Object, e As EventArgs) Handles ThemeToggle.CheckedChanged
         If Me.ThemeToggle.Checked Then
-            Call Theme.Dark(Me)
+            Call Theme.Dark()
             Call (New ToolTip).SetToolTip(Me.ThemeToggle, "Light Mode")
 
             Me.ThemeToggle.BackgroundImage = Image.FromFile("C:\Users\zaiimrq\source\repos\Inventory\Inventory\Assets\Icons\sun.png")
             Me.ThemeToggle.BackColor = Theme.DarkColor
         Else
-            Call Theme.Light(Me)
+            Call Theme.Light()
             Call (New ToolTip).SetToolTip(Me.ThemeToggle, "Dark Mode")
 
             Me.ThemeToggle.BackgroundImage = Image.FromFile("C:\Users\zaiimrq\source\repos\Inventory\Inventory\Assets\Icons\moon.png")
@@ -127,5 +128,13 @@ Public Class FormDashboard
 
     Private Sub UpdatedProfileHandler()
         Me.LabelGreeting.Text = Me.GreetingText & Auth.User.Name
+    End Sub
+
+    Private Sub DetailTransactionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DetailTransactionToolStripMenuItem.Click
+        FormTransactions.Show()
+    End Sub
+
+    Private Sub SetTheme()
+        Theme.Apply(Me)
     End Sub
 End Class

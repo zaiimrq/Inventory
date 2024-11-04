@@ -35,6 +35,7 @@ Partial Class FormDashboard
         TransactionsToolStripMenuItem = New ToolStripMenuItem()
         BarangMasukToolStripMenuItem = New ToolStripMenuItem()
         BarangKeluatrToolStripMenuItem = New ToolStripMenuItem()
+        DetailTransactionToolStripMenuItem = New ToolStripMenuItem()
         AccountToolStripMenuItem = New ToolStripMenuItem()
         UsersToolStripMenuItem = New ToolStripMenuItem()
         ProfileToolStripMenuItem = New ToolStripMenuItem()
@@ -109,7 +110,7 @@ Partial Class FormDashboard
         ' 
         ' TransactionsToolStripMenuItem
         ' 
-        TransactionsToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {BarangMasukToolStripMenuItem, BarangKeluatrToolStripMenuItem})
+        TransactionsToolStripMenuItem.DropDownItems.AddRange(New ToolStripItem() {BarangMasukToolStripMenuItem, BarangKeluatrToolStripMenuItem, DetailTransactionToolStripMenuItem})
         TransactionsToolStripMenuItem.Name = "TransactionsToolStripMenuItem"
         resources.ApplyResources(TransactionsToolStripMenuItem, "TransactionsToolStripMenuItem")
         ' 
@@ -122,6 +123,11 @@ Partial Class FormDashboard
         ' 
         BarangKeluatrToolStripMenuItem.Name = "BarangKeluatrToolStripMenuItem"
         resources.ApplyResources(BarangKeluatrToolStripMenuItem, "BarangKeluatrToolStripMenuItem")
+        ' 
+        ' DetailTransactionToolStripMenuItem
+        ' 
+        DetailTransactionToolStripMenuItem.Name = "DetailTransactionToolStripMenuItem"
+        resources.ApplyResources(DetailTransactionToolStripMenuItem, "DetailTransactionToolStripMenuItem")
         ' 
         ' AccountToolStripMenuItem
         ' 
@@ -305,4 +311,5 @@ Partial Class FormDashboard
     Friend WithEvents BarangKeluatrToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ThemeToggle As CheckBox
     Friend WithEvents LabelGreeting As Label
+    Friend WithEvents DetailTransactionToolStripMenuItem As ToolStripMenuItem
 End Class

@@ -36,7 +36,7 @@ Partial Class FormBarangKeluar
         TextBoxAmount = New TextBox()
         PanelRefresh = New Panel()
         TextBoxCode = New TextBox()
-        No = New DataGridViewTextBoxColumn()
+        LabelAmountUnit = New Label()
         Id = New DataGridViewTextBoxColumn()
         Code = New DataGridViewTextBoxColumn()
         Barang = New DataGridViewTextBoxColumn()
@@ -63,7 +63,7 @@ Partial Class FormBarangKeluar
         DataGridViewBarangKeluar.AllowUserToDeleteRows = False
         DataGridViewBarangKeluar.BackgroundColor = SystemColors.Control
         DataGridViewBarangKeluar.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewBarangKeluar.Columns.AddRange(New DataGridViewColumn() {No, Id, Code, Barang, Consumer, Amount, Provider, Tnggal})
+        DataGridViewBarangKeluar.Columns.AddRange(New DataGridViewColumn() {Id, Code, Barang, Consumer, Amount, Provider, Tnggal})
         DataGridViewBarangKeluar.Cursor = Cursors.Hand
         DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle1.BackColor = SystemColors.Window
@@ -193,12 +193,16 @@ Partial Class FormBarangKeluar
         TextBoxCode.Size = New Size(293, 27)
         TextBoxCode.TabIndex = 15
         ' 
-        ' No
+        ' LabelAmountUnit
         ' 
-        No.HeaderText = "No"
-        No.Name = "No"
-        No.ReadOnly = True
-        No.Width = 45
+        LabelAmountUnit.AutoSize = True
+        LabelAmountUnit.BackColor = Color.Transparent
+        LabelAmountUnit.Font = New Font("Geist Mono", 9.749999F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        LabelAmountUnit.Location = New Point(246, 184)
+        LabelAmountUnit.Name = "LabelAmountUnit"
+        LabelAmountUnit.Size = New Size(55, 16)
+        LabelAmountUnit.TabIndex = 17
+        LabelAmountUnit.Text = "Karton"
         ' 
         ' Id
         ' 
@@ -254,6 +258,7 @@ Partial Class FormBarangKeluar
         AutoScaleDimensions = New SizeF(10F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(884, 561)
+        Controls.Add(LabelAmountUnit)
         Controls.Add(TextBoxCode)
         Controls.Add(PanelRefresh)
         Controls.Add(TextBoxAmount)
@@ -293,7 +298,7 @@ Partial Class FormBarangKeluar
     Friend WithEvents ComboBoxConsumer As ComboBox
     Friend WithEvents PanelRefresh As Panel
     Friend WithEvents TextBoxCode As TextBox
-    Friend WithEvents No As DataGridViewTextBoxColumn
+    Friend WithEvents LabelAmountUnit As Label
     Friend WithEvents Id As DataGridViewTextBoxColumn
     Friend WithEvents Code As DataGridViewTextBoxColumn
     Friend WithEvents Barang As DataGridViewTextBoxColumn

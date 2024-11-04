@@ -21,6 +21,7 @@ Namespace Services
             Dim Validated As BarangMasuk = Me.Validate(BarangMasuk)
             If Not IsNothing(Repository.Find(Validated.Id)) Then Throw New ValidationException("Data Already Exists !")
             Repository.CreateNewData(Validated)
+            TransactionRepository.CreateData(New Transaction With {.Code = Validated.Code})
         End Sub
         Public Function Update(BarangMasuk As BarangMasuk) As Boolean
             Dim Validated As BarangMasuk = Me.Validate(BarangMasuk)
@@ -43,7 +44,7 @@ Namespace Services
 
             Return Repository.UpadateData(Validated) >= 1
         End Function
-        Public Function Destroy(BarangMasuk As BarangMasuk) As Boolean
+        Public Sub Destroy(BarangMasuk As BarangMasuk)
             Dim OldBarangMasuk As BarangMasuk = Repository.Find(BarangMasuk.Id)
 
             If IsNothing(OldBarangMasuk) Then Throw New ValidationException("Data Not Found !")
@@ -55,10 +56,10 @@ Namespace Services
                     .Id = OldBarangMasuk.BarangId,
                     .Stock = OldBarangMasuk.Amount
                                            })
-                Return Repository.DeleteData(OldBarangMasuk) >= 1
+                Call Repository.DeleteData(OldBarangMasuk)
+                If Repository.FindByCode(OldBarangMasuk.Code) = 0 Then TransactionRepository.DeleteData(OldBarangMasuk.Code)
             End If
-            Return Nothing
-        End Function
+        End Sub
 
         Public Function Validate(BarangMasuk As BarangMasuk) As BarangMasuk
             If String.IsNullOrEmpty(BarangMasuk.SupplierId) Then Throw New ValidationException("Field Supplier Is Required !")

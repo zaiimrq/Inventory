@@ -28,16 +28,18 @@ Namespace Services
 
             Return Repository.UpadateConsumer(Validated, OldConsumer.Id) >= 1
         End Function
-        Public Function Destroy(Consumer As Consumer) As Boolean
+        Public Sub Destroy(Consumer As Consumer)
             Dim OldConsumer As Consumer = Repository.Find(Consumer.Id)
 
             If IsNothing(OldConsumer) Then Throw New ValidationException("Data Not Found !")
 
             Dim Result As DialogResult = Box.Question("Are You Sure ?")
 
-            If Result = DialogResult.Yes Then Return Repository.DeleteConsumer(Consumer) >= 1
-            Return Nothing
-        End Function
+            If Result = DialogResult.Yes Then
+                Repository.DeleteConsumer(Consumer)
+                TransactionRepository.DeleteDataOnNull()
+            End If
+        End Sub
 
         Public Function Validate(Consumer As Consumer) As Consumer
 
