@@ -32,9 +32,8 @@ Public Class FormTransactions
 
         If DataTable IsNot Nothing AndAlso DataTable.Rows.Count > 0 Then
             For Each Row As DataRow In DataTable.Rows
-                Dim Type As String = If(Row("code").ToString.StartsWith("BM"), "Masuk", "Keluar")
+                Dim Type As String = If(Row("code").ToString.StartsWith("BM"), "Barang Masuk", "Barang Keluar")
                 Dim Jumlah As String = If(Row("code").ToString.StartsWith("BM"), Row("jumlah_bm"), Row("jumlah_bk"))
-
                 Me.DataGridViewTransactions.Rows.Add(No, Row("code"), Jumlah, Type, Convert.ToDateTime(Row("created_at")).ToString("dd MMMM yyyy"))
                 No += 1
             Next

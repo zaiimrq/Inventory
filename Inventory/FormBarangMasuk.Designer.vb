@@ -26,13 +26,6 @@ Partial Class FormBarangMasuk
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormBarangMasuk))
         Label1 = New Label()
         DataGridViewBarangMasuk = New DataGridView()
-        Id = New DataGridViewTextBoxColumn()
-        Code = New DataGridViewTextBoxColumn()
-        Barang = New DataGridViewTextBoxColumn()
-        Supplier = New DataGridViewTextBoxColumn()
-        Amount = New DataGridViewTextBoxColumn()
-        Provider = New DataGridViewTextBoxColumn()
-        Tnggal = New DataGridViewTextBoxColumn()
         TextBoxSearch = New TextBox()
         ButtonCreate = New Button()
         ButtonUpdate = New Button()
@@ -44,6 +37,14 @@ Partial Class FormBarangMasuk
         PanelRefresh = New Panel()
         TextBoxCode = New TextBox()
         LabelAmountUnit = New Label()
+        No = New DataGridViewTextBoxColumn()
+        Id = New DataGridViewTextBoxColumn()
+        Code = New DataGridViewTextBoxColumn()
+        Barang = New DataGridViewTextBoxColumn()
+        Supplier = New DataGridViewTextBoxColumn()
+        Amount = New DataGridViewTextBoxColumn()
+        Provider = New DataGridViewTextBoxColumn()
+        Tnggal = New DataGridViewTextBoxColumn()
         CType(DataGridViewBarangMasuk, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -62,7 +63,7 @@ Partial Class FormBarangMasuk
         DataGridViewBarangMasuk.AllowUserToAddRows = False
         DataGridViewBarangMasuk.BackgroundColor = SystemColors.Control
         DataGridViewBarangMasuk.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewBarangMasuk.Columns.AddRange(New DataGridViewColumn() {Id, Code, Barang, Supplier, Amount, Provider, Tnggal})
+        DataGridViewBarangMasuk.Columns.AddRange(New DataGridViewColumn() {No, Id, Code, Barang, Supplier, Amount, Provider, Tnggal})
         DataGridViewBarangMasuk.Cursor = Cursors.Hand
         DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle1.BackColor = SystemColors.Window
@@ -79,55 +80,6 @@ Partial Class FormBarangMasuk
         DataGridViewBarangMasuk.ReadOnly = True
         DataGridViewBarangMasuk.Size = New Size(864, 281)
         DataGridViewBarangMasuk.TabIndex = 1
-        ' 
-        ' Id
-        ' 
-        Id.HeaderText = "Id"
-        Id.Name = "Id"
-        Id.ReadOnly = True
-        Id.Width = 75
-        ' 
-        ' Code
-        ' 
-        Code.HeaderText = "Code"
-        Code.Name = "Code"
-        Code.ReadOnly = True
-        Code.Width = 75
-        ' 
-        ' Barang
-        ' 
-        Barang.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-        Barang.HeaderText = "Barang"
-        Barang.Name = "Barang"
-        Barang.ReadOnly = True
-        ' 
-        ' Supplier
-        ' 
-        Supplier.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-        Supplier.HeaderText = "Supplier"
-        Supplier.Name = "Supplier"
-        Supplier.ReadOnly = True
-        ' 
-        ' Amount
-        ' 
-        Amount.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-        Amount.HeaderText = "Amount"
-        Amount.Name = "Amount"
-        Amount.ReadOnly = True
-        ' 
-        ' Provider
-        ' 
-        Provider.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-        Provider.HeaderText = "Provider"
-        Provider.Name = "Provider"
-        Provider.ReadOnly = True
-        ' 
-        ' Tnggal
-        ' 
-        Tnggal.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
-        Tnggal.HeaderText = "Tanggal"
-        Tnggal.Name = "Tnggal"
-        Tnggal.ReadOnly = True
         ' 
         ' TextBoxSearch
         ' 
@@ -254,6 +206,63 @@ Partial Class FormBarangMasuk
         LabelAmountUnit.Text = "Karton"
         LabelAmountUnit.TextAlign = ContentAlignment.MiddleCenter
         ' 
+        ' No
+        ' 
+        No.HeaderText = "No"
+        No.Name = "No"
+        No.ReadOnly = True
+        No.Width = 45
+        ' 
+        ' Id
+        ' 
+        Id.HeaderText = "Id"
+        Id.Name = "Id"
+        Id.ReadOnly = True
+        Id.Visible = False
+        Id.Width = 75
+        ' 
+        ' Code
+        ' 
+        Code.HeaderText = "Code"
+        Code.Name = "Code"
+        Code.ReadOnly = True
+        Code.Width = 75
+        ' 
+        ' Barang
+        ' 
+        Barang.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        Barang.HeaderText = "Barang"
+        Barang.Name = "Barang"
+        Barang.ReadOnly = True
+        ' 
+        ' Supplier
+        ' 
+        Supplier.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        Supplier.HeaderText = "Supplier"
+        Supplier.Name = "Supplier"
+        Supplier.ReadOnly = True
+        ' 
+        ' Amount
+        ' 
+        Amount.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        Amount.HeaderText = "Amount"
+        Amount.Name = "Amount"
+        Amount.ReadOnly = True
+        ' 
+        ' Provider
+        ' 
+        Provider.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        Provider.HeaderText = "Provider"
+        Provider.Name = "Provider"
+        Provider.ReadOnly = True
+        ' 
+        ' Tnggal
+        ' 
+        Tnggal.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        Tnggal.HeaderText = "Tanggal"
+        Tnggal.Name = "Tnggal"
+        Tnggal.ReadOnly = True
+        ' 
         ' FormBarangMasuk
         ' 
         AutoScaleDimensions = New SizeF(10F, 20F)
@@ -301,6 +310,7 @@ Partial Class FormBarangMasuk
     Friend WithEvents PanelRefresh As Panel
     Friend WithEvents TextBoxCode As TextBox
     Friend WithEvents LabelAmountUnit As Label
+    Friend WithEvents No As DataGridViewTextBoxColumn
     Friend WithEvents Id As DataGridViewTextBoxColumn
     Friend WithEvents Code As DataGridViewTextBoxColumn
     Friend WithEvents Barang As DataGridViewTextBoxColumn

@@ -53,8 +53,17 @@ Partial Class FormDashboard
         Label6 = New Label()
         LabelTotalBarang = New Label()
         PictureBox3 = New PictureBox()
+        Panel5 = New Panel()
+        Label5 = New Label()
+        LabelTotalBarangMasuk = New Label()
+        PictureBox5 = New PictureBox()
+        Panel3 = New Panel()
+        Label2 = New Label()
+        LabelTotalBarangKeluar = New Label()
+        PictureBox4 = New PictureBox()
         ThemeToggle = New CheckBox()
         LabelGreeting = New Label()
+        Label7 = New Label()
         MenuStrip1.SuspendLayout()
         FlowLayoutPanel1.SuspendLayout()
         Panel1.SuspendLayout()
@@ -63,6 +72,10 @@ Partial Class FormDashboard
         CType(PictureBox2, ComponentModel.ISupportInitialize).BeginInit()
         Panel2.SuspendLayout()
         CType(PictureBox3, ComponentModel.ISupportInitialize).BeginInit()
+        Panel5.SuspendLayout()
+        CType(PictureBox5, ComponentModel.ISupportInitialize).BeginInit()
+        Panel3.SuspendLayout()
+        CType(PictureBox4, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' Label1
@@ -158,6 +171,8 @@ Partial Class FormDashboard
         FlowLayoutPanel1.Controls.Add(Panel1)
         FlowLayoutPanel1.Controls.Add(Panel4)
         FlowLayoutPanel1.Controls.Add(Panel2)
+        FlowLayoutPanel1.Controls.Add(Panel5)
+        FlowLayoutPanel1.Controls.Add(Panel3)
         FlowLayoutPanel1.Name = "FlowLayoutPanel1"
         ' 
         ' Panel1
@@ -235,6 +250,56 @@ Partial Class FormDashboard
         PictureBox3.Name = "PictureBox3"
         PictureBox3.TabStop = False
         ' 
+        ' Panel5
+        ' 
+        Panel5.BackColor = Color.CornflowerBlue
+        Panel5.Controls.Add(Label5)
+        Panel5.Controls.Add(LabelTotalBarangMasuk)
+        Panel5.Controls.Add(PictureBox5)
+        resources.ApplyResources(Panel5, "Panel5")
+        Panel5.Name = "Panel5"
+        ' 
+        ' Label5
+        ' 
+        resources.ApplyResources(Label5, "Label5")
+        Label5.Name = "Label5"
+        ' 
+        ' LabelTotalBarangMasuk
+        ' 
+        resources.ApplyResources(LabelTotalBarangMasuk, "LabelTotalBarangMasuk")
+        LabelTotalBarangMasuk.Name = "LabelTotalBarangMasuk"
+        ' 
+        ' PictureBox5
+        ' 
+        resources.ApplyResources(PictureBox5, "PictureBox5")
+        PictureBox5.Name = "PictureBox5"
+        PictureBox5.TabStop = False
+        ' 
+        ' Panel3
+        ' 
+        Panel3.BackColor = Color.CornflowerBlue
+        Panel3.Controls.Add(Label2)
+        Panel3.Controls.Add(LabelTotalBarangKeluar)
+        Panel3.Controls.Add(PictureBox4)
+        resources.ApplyResources(Panel3, "Panel3")
+        Panel3.Name = "Panel3"
+        ' 
+        ' Label2
+        ' 
+        resources.ApplyResources(Label2, "Label2")
+        Label2.Name = "Label2"
+        ' 
+        ' LabelTotalBarangKeluar
+        ' 
+        resources.ApplyResources(LabelTotalBarangKeluar, "LabelTotalBarangKeluar")
+        LabelTotalBarangKeluar.Name = "LabelTotalBarangKeluar"
+        ' 
+        ' PictureBox4
+        ' 
+        resources.ApplyResources(PictureBox4, "PictureBox4")
+        PictureBox4.Name = "PictureBox4"
+        PictureBox4.TabStop = False
+        ' 
         ' ThemeToggle
         ' 
         resources.ApplyResources(ThemeToggle, "ThemeToggle")
@@ -252,10 +317,16 @@ Partial Class FormDashboard
         resources.ApplyResources(LabelGreeting, "LabelGreeting")
         LabelGreeting.Name = "LabelGreeting"
         ' 
+        ' Label7
+        ' 
+        resources.ApplyResources(Label7, "Label7")
+        Label7.Name = "Label7"
+        ' 
         ' FormDashboard
         ' 
         resources.ApplyResources(Me, "$this")
         AutoScaleMode = AutoScaleMode.Font
+        Controls.Add(Label7)
         Controls.Add(LabelGreeting)
         Controls.Add(ThemeToggle)
         Controls.Add(FlowLayoutPanel1)
@@ -277,6 +348,12 @@ Partial Class FormDashboard
         Panel2.ResumeLayout(False)
         Panel2.PerformLayout()
         CType(PictureBox3, ComponentModel.ISupportInitialize).EndInit()
+        Panel5.ResumeLayout(False)
+        Panel5.PerformLayout()
+        CType(PictureBox5, ComponentModel.ISupportInitialize).EndInit()
+        Panel3.ResumeLayout(False)
+        Panel3.PerformLayout()
+        CType(PictureBox4, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -312,4 +389,13 @@ Partial Class FormDashboard
     Friend WithEvents ThemeToggle As CheckBox
     Friend WithEvents LabelGreeting As Label
     Friend WithEvents DetailTransactionToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents Panel3 As Panel
+    Friend WithEvents Label2 As Label
+    Friend WithEvents LabelTotalBarangKeluar As Label
+    Friend WithEvents PictureBox4 As PictureBox
+    Friend WithEvents Panel5 As Panel
+    Friend WithEvents Label5 As Label
+    Friend WithEvents LabelTotalBarangMasuk As Label
+    Friend WithEvents PictureBox5 As PictureBox
+    Friend WithEvents Label7 As Label
 End Class

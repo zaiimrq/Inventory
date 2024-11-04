@@ -1,5 +1,6 @@
 ﻿Imports System.Globalization
 Imports Inventory.Facades
+Imports Inventory.Repositories
 Imports Inventory.Services
 
 Public Class FormDashboard
@@ -38,6 +39,9 @@ Public Class FormDashboard
         Me.LabelTotalSuppliers.Text = Convert.ToInt32(Stats.Rows(0)("total_suppliers"))
         Me.LabelTotalConsumers.Text = Convert.ToInt32(Stats.Rows(0)("total_consumers"))
         Me.LabelTotalBarang.Text = Convert.ToInt32(Stats.Rows(0)("total_barang"))
+
+        Me.LabelTotalBarangMasuk.Text = BarangMasukRepository.GetTotalByMonth
+        Me.LabelTotalBarangKeluar.Text = BarangKeluarRepository.GetTotalByMonth
     End Sub
 
 
@@ -90,6 +94,10 @@ Public Class FormDashboard
     Private Sub FormDashboard_Shown(sender As Object, e As EventArgs) Handles Me.Shown
         AddHandler FormBarangKeluar.SyncDataBarang, AddressOf FormBarang.RefreshForm
         AddHandler FormBarangMasuk.SyncDataBarang, AddressOf FormBarang.RefreshForm
+
+        AddHandler FormBarangKeluar.SyncDataBarang, AddressOf Me.InitialStats
+        AddHandler FormBarangMasuk.SyncDataBarang, AddressOf Me.InitialStats
+
         AddHandler FormProfile.UpdatedProfile, AddressOf Me.UpdatedProfileHandler
         AddHandler Theme.SwitchedTheme, AddressOf Me.SetTheme
     End Sub

@@ -27,7 +27,7 @@ Namespace Facades
                 Form.BackColor = DarkColor
                 Form.ForeColor = Color.White
             Else
-                Form.BackColor = Color.White
+                Form.BackColor = SystemColors.Control
                 Form.ForeColor = Color.Black
             End If
 

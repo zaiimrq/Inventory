@@ -26,13 +26,13 @@ Partial Class FormTransactions
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormTransactions))
         Label1 = New Label()
         DataGridViewTransactions = New DataGridView()
+        PanelRefresh = New Panel()
+        TextBoxSearch = New TextBox()
         No = New DataGridViewTextBoxColumn()
         Code = New DataGridViewTextBoxColumn()
         Jumlah = New DataGridViewTextBoxColumn()
         Type = New DataGridViewTextBoxColumn()
         Tanggal = New DataGridViewTextBoxColumn()
-        PanelRefresh = New Panel()
-        TextBoxSearch = New TextBox()
         CType(DataGridViewTransactions, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -70,6 +70,26 @@ Partial Class FormTransactions
         DataGridViewTransactions.Size = New Size(864, 435)
         DataGridViewTransactions.TabIndex = 1
         ' 
+        ' PanelRefresh
+        ' 
+        PanelRefresh.BackgroundImage = CType(resources.GetObject("PanelRefresh.BackgroundImage"), Image)
+        PanelRefresh.BackgroundImageLayout = ImageLayout.Zoom
+        PanelRefresh.Cursor = Cursors.Hand
+        PanelRefresh.Location = New Point(851, 28)
+        PanelRefresh.Name = "PanelRefresh"
+        PanelRefresh.Size = New Size(20, 20)
+        PanelRefresh.TabIndex = 14
+        ' 
+        ' TextBoxSearch
+        ' 
+        TextBoxSearch.BorderStyle = BorderStyle.FixedSingle
+        TextBoxSearch.Font = New Font("Geist Mono SemiBold", 12F, FontStyle.Bold)
+        TextBoxSearch.Location = New Point(534, 73)
+        TextBoxSearch.Name = "TextBoxSearch"
+        TextBoxSearch.PlaceholderText = "Search..."
+        TextBoxSearch.Size = New Size(340, 27)
+        TextBoxSearch.TabIndex = 15
+        ' 
         ' No
         ' 
         No.HeaderText = "No"
@@ -97,6 +117,7 @@ Partial Class FormTransactions
         Type.HeaderText = "Type"
         Type.Name = "Type"
         Type.ReadOnly = True
+        Type.Resizable = DataGridViewTriState.True
         ' 
         ' Tanggal
         ' 
@@ -104,26 +125,6 @@ Partial Class FormTransactions
         Tanggal.HeaderText = "Tanggal"
         Tanggal.Name = "Tanggal"
         Tanggal.ReadOnly = True
-        ' 
-        ' PanelRefresh
-        ' 
-        PanelRefresh.BackgroundImage = CType(resources.GetObject("PanelRefresh.BackgroundImage"), Image)
-        PanelRefresh.BackgroundImageLayout = ImageLayout.Zoom
-        PanelRefresh.Cursor = Cursors.Hand
-        PanelRefresh.Location = New Point(851, 28)
-        PanelRefresh.Name = "PanelRefresh"
-        PanelRefresh.Size = New Size(20, 20)
-        PanelRefresh.TabIndex = 14
-        ' 
-        ' TextBoxSearch
-        ' 
-        TextBoxSearch.BorderStyle = BorderStyle.FixedSingle
-        TextBoxSearch.Font = New Font("Geist Mono SemiBold", 12F, FontStyle.Bold)
-        TextBoxSearch.Location = New Point(534, 73)
-        TextBoxSearch.Name = "TextBoxSearch"
-        TextBoxSearch.PlaceholderText = "Search..."
-        TextBoxSearch.Size = New Size(340, 27)
-        TextBoxSearch.TabIndex = 15
         ' 
         ' FormTransactions
         ' 

@@ -24,6 +24,7 @@ Partial Class FormShowTransaction
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(FormShowTransaction))
         ListBoxTransaction = New ListBox()
+        Label1 = New Label()
         SuspendLayout()
         ' 
         ' ListBoxTransaction
@@ -34,17 +35,28 @@ Partial Class FormShowTransaction
         ListBoxTransaction.Font = New Font("Geist Mono", 12F)
         ListBoxTransaction.FormattingEnabled = True
         ListBoxTransaction.ItemHeight = 20
-        ListBoxTransaction.Location = New Point(18, 99)
+        ListBoxTransaction.Location = New Point(18, 79)
         ListBoxTransaction.Margin = New Padding(4)
         ListBoxTransaction.Name = "ListBoxTransaction"
-        ListBoxTransaction.Size = New Size(348, 380)
+        ListBoxTransaction.Size = New Size(348, 400)
         ListBoxTransaction.TabIndex = 0
+        ' 
+        ' Label1
+        ' 
+        Label1.AutoSize = True
+        Label1.Font = New Font("Geist Mono Medium", 11.9999981F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
+        Label1.Location = New Point(18, 34)
+        Label1.Name = "Label1"
+        Label1.Size = New Size(152, 20)
+        Label1.TabIndex = 1
+        Label1.Text = "List Of Items"
         ' 
         ' FormShowTransaction
         ' 
         AutoScaleDimensions = New SizeF(10F, 20F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(384, 461)
+        Controls.Add(Label1)
         Controls.Add(ListBoxTransaction)
         Font = New Font("Geist Mono", 11.9999981F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Icon = CType(resources.GetObject("$this.Icon"), Icon)
@@ -58,7 +70,9 @@ Partial Class FormShowTransaction
         StartPosition = FormStartPosition.CenterScreen
         Text = "Show Transaction"
         ResumeLayout(False)
+        PerformLayout()
     End Sub
 
     Friend WithEvents ListBoxTransaction As ListBox
+    Friend WithEvents Label1 As Label
 End Class

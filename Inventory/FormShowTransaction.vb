@@ -22,7 +22,8 @@ Public Class FormShowTransaction
         Dim No As Integer = 1
 
         For Each Row As DataRow In TransactionService.GetDataByCode(Me.Code).Rows
-            Dim Item As String = No & ". " & Row("name") & " " & Row("Amount") & " " & Row("unit")
+            Dim Amount As String = If(IsDBNull(Row("bm_amount")), Row("bk_amount"), Row("bm_amount"))
+            Dim Item As String = No & ". " & Row("name") & " " & Amount & " " & Row("unit")
             Me.ListBoxTransaction.Items.Add(Item)
             No += 1
         Next

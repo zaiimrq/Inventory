@@ -50,8 +50,10 @@ Public Class FormBarangKeluar
         Dim DataTable As DataTable = Service.Index(Search)
 
         If DataTable IsNot Nothing AndAlso DataTable.Rows.Count > 0 Then
+            Dim No As Integer = 1
             For Each Row As DataRow In DataTable.Rows
-                Me.DataGridViewBarangKeluar.Rows.Add(Row("id"), Row("code"), Row("barang_name"), Row("consumer_name"), Row("amount") & " " & Row("barang_unit"), Row("provider"), Convert.ToDateTime(Row("created_at")).ToString("dd MMMM yyyy"))
+                Me.DataGridViewBarangKeluar.Rows.Add(No, Row("id"), Row("code"), Row("barang_name"), Row("consumer_name"), Row("amount") & " " & Row("barang_unit"), Row("provider"), Convert.ToDateTime(Row("created_at")).ToString("dd MMMM yyyy"))
+                No += 1
             Next
         End If
     End Sub

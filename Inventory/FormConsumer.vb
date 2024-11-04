@@ -22,7 +22,6 @@ Public Class FormConsumer
 
     Private Sub FillDataGridView(Optional Search As String = "")
         Me.DataGridViewConsumer.Rows.Clear()
-        Me.DataGridViewConsumer.Columns("Id").Visible = False
         Dim No As Integer = 1
         Dim DataTable As DataTable = Service.Index(Search)
 

@@ -60,7 +60,7 @@ Namespace Repositories
             Database.OpenConnection()
 
             Try
-                Dim Command As New MySqlCommand("SELECT bm.*, bk.*, b.* FROM transactions t LEFT JOIN barang_masuk bm ON bm.code = t.code LEFT JOIN barang_keluar bk ON bk.code = t.code LEFT JOIN barang b ON b.id = COALESCE(bm.barang_id, bk.barang_id) WHERE t.code = @code", Database.Connection)
+                Dim Command As New MySqlCommand("SELECT bm.amount AS bm_amount, bk.amount AS bk_amount, b.unit, b.name FROM transactions t LEFT JOIN barang_masuk bm ON bm.code = t.code LEFT JOIN barang_keluar bk ON bk.code = t.code LEFT JOIN barang b ON b.id = COALESCE(bm.barang_id, bk.barang_id) WHERE t.code = @code", Database.Connection)
                 Command.Parameters.AddWithValue("@code", Code)
                 Return New MySqlDataAdapter(Command)
             Catch ex As MySqlException

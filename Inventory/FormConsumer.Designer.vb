@@ -32,10 +32,10 @@ Partial Class FormConsumer
         TextBoxId = New TextBox()
         TextBoxSearch = New TextBox()
         DataGridViewConsumer = New DataGridView()
+        PanelRefresh = New Panel()
         No = New DataGridViewTextBoxColumn()
         Id = New DataGridViewTextBoxColumn()
         Nama = New DataGridViewTextBoxColumn()
-        PanelRefresh = New Panel()
         CType(DataGridViewConsumer, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -144,6 +144,16 @@ Partial Class FormConsumer
         DataGridViewConsumer.Size = New Size(664, 262)
         DataGridViewConsumer.TabIndex = 18
         ' 
+        ' PanelRefresh
+        ' 
+        PanelRefresh.BackgroundImage = CType(resources.GetObject("PanelRefresh.BackgroundImage"), Image)
+        PanelRefresh.BackgroundImageLayout = ImageLayout.Zoom
+        PanelRefresh.Cursor = Cursors.Hand
+        PanelRefresh.Location = New Point(651, 28)
+        PanelRefresh.Name = "PanelRefresh"
+        PanelRefresh.Size = New Size(20, 20)
+        PanelRefresh.TabIndex = 20
+        ' 
         ' No
         ' 
         No.HeaderText = "No"
@@ -156,6 +166,7 @@ Partial Class FormConsumer
         Id.HeaderText = "Id"
         Id.Name = "Id"
         Id.ReadOnly = True
+        Id.Visible = False
         Id.Width = 50
         ' 
         ' Nama
@@ -164,16 +175,6 @@ Partial Class FormConsumer
         Nama.HeaderText = "Name"
         Nama.Name = "Nama"
         Nama.ReadOnly = True
-        ' 
-        ' PanelRefresh
-        ' 
-        PanelRefresh.BackgroundImage = CType(resources.GetObject("PanelRefresh.BackgroundImage"), Image)
-        PanelRefresh.BackgroundImageLayout = ImageLayout.Zoom
-        PanelRefresh.Cursor = Cursors.Hand
-        PanelRefresh.Location = New Point(651, 28)
-        PanelRefresh.Name = "PanelRefresh"
-        PanelRefresh.Size = New Size(20, 20)
-        PanelRefresh.TabIndex = 20
         ' 
         ' FormConsumer
         ' 
@@ -212,8 +213,8 @@ Partial Class FormConsumer
     Friend WithEvents TextBoxId As TextBox
     Friend WithEvents TextBoxSearch As TextBox
     Friend WithEvents DataGridViewConsumer As DataGridView
+    Friend WithEvents PanelRefresh As Panel
     Friend WithEvents No As DataGridViewTextBoxColumn
     Friend WithEvents Id As DataGridViewTextBoxColumn
     Friend WithEvents Nama As DataGridViewTextBoxColumn
-    Friend WithEvents PanelRefresh As Panel
 End Class

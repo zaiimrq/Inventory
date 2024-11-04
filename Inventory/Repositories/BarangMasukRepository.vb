@@ -123,5 +123,20 @@ Namespace Repositories
                 Database.CloseConnection()
             End Try
         End Function
+
+        Public Shared Function GetTotalByMonth() As Integer
+            Database.OpenConnection()
+            Try
+                Dim Command As New MySqlCommand("SELECT COUNT(barang_id) AS jumlah_barang FROM barang_masuk WHERE MONTH(created_at) = MONTH(CURDATE()) AND YEAR(created_at) = YEAR(CURDATE())", Database.Connection)
+                Dim Reader As MySqlDataReader = Command.ExecuteReader
+                Reader.Read()
+                Dim Total As Integer = If(IsDBNull(Reader("jumlah_barang")), 0, Convert.ToInt32(Reader("jumlah_barang")))
+                Reader.Close()
+                Return Total
+            Catch ex As MySqlException
+                Box.Danger(ex.Message)
+                Return Nothing
+            End Try
+        End Function
     End Class
 End Namespace

@@ -37,6 +37,7 @@ Partial Class FormBarangKeluar
         PanelRefresh = New Panel()
         TextBoxCode = New TextBox()
         LabelAmountUnit = New Label()
+        No = New DataGridViewTextBoxColumn()
         Id = New DataGridViewTextBoxColumn()
         Code = New DataGridViewTextBoxColumn()
         Barang = New DataGridViewTextBoxColumn()
@@ -63,7 +64,7 @@ Partial Class FormBarangKeluar
         DataGridViewBarangKeluar.AllowUserToDeleteRows = False
         DataGridViewBarangKeluar.BackgroundColor = SystemColors.Control
         DataGridViewBarangKeluar.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewBarangKeluar.Columns.AddRange(New DataGridViewColumn() {Id, Code, Barang, Consumer, Amount, Provider, Tnggal})
+        DataGridViewBarangKeluar.Columns.AddRange(New DataGridViewColumn() {No, Id, Code, Barang, Consumer, Amount, Provider, Tnggal})
         DataGridViewBarangKeluar.Cursor = Cursors.Hand
         DataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle1.BackColor = SystemColors.Window
@@ -204,11 +205,19 @@ Partial Class FormBarangKeluar
         LabelAmountUnit.TabIndex = 17
         LabelAmountUnit.Text = "Karton"
         ' 
+        ' No
+        ' 
+        No.HeaderText = "No"
+        No.Name = "No"
+        No.ReadOnly = True
+        No.Width = 45
+        ' 
         ' Id
         ' 
         Id.HeaderText = "Id"
         Id.Name = "Id"
         Id.ReadOnly = True
+        Id.Visible = False
         Id.Width = 75
         ' 
         ' Code
@@ -299,6 +308,7 @@ Partial Class FormBarangKeluar
     Friend WithEvents PanelRefresh As Panel
     Friend WithEvents TextBoxCode As TextBox
     Friend WithEvents LabelAmountUnit As Label
+    Friend WithEvents No As DataGridViewTextBoxColumn
     Friend WithEvents Id As DataGridViewTextBoxColumn
     Friend WithEvents Code As DataGridViewTextBoxColumn
     Friend WithEvents Barang As DataGridViewTextBoxColumn

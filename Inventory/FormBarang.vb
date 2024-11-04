@@ -97,4 +97,9 @@ Public Class FormBarang
     Private Sub PanelRefresh_Click(sender As Object, e As EventArgs) Handles PanelRefresh.Click
         Me.RefreshForm()
     End Sub
+
+    Private Sub FormBarang_Shown(sender As Object, e As EventArgs) Handles Me.Shown
+        AddHandler FormBarangKeluar.SyncDataBarang, AddressOf Me.RefreshForm
+        AddHandler FormBarangMasuk.SyncDataBarang, AddressOf Me.RefreshForm
+    End Sub
 End Class
